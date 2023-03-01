@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Add Flight</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Add Flight</h1>
+
+	<form action="/admin/flights" th:object="${flight}" method="post">
+		<table>
+			<tr>
+				<td>Flight Number:</td>
+				<td><input type="text" th:field="*{flightnum}" /></td>
+			</tr>
+			<tr>
+				<td>Operating Airline:</td>
+				<td><input type="text" th:field="*{operatingairline}" /></td>
+			</tr>
+			<tr>
+				<td>Departure City:</td>
+				<td><input type="text" th:field="*{departurecity}" /></td>
+			</tr>
+			<tr>
+				<td>Arrival City:</td>
+				<td><input type="text" th:field="*{arrivalcity}" /></td>
+			</tr>
+			<tr>
+				<td>Date of Departure:</td>
+				<td><input type="text" th:field="*{dateofdeparture}"
+					th:placeholder="'yyyy-MM-dd'" /></td>
+			</tr>
+			<tr>
+				<td>Estimated Departure Time:</td>
+				<td><input type="text" th:field="*{estimateddeparturetime}"
+					th:placeholder="'yyyy-MM-dd HH:mm:ss.SSS'" /></td>
+			</tr>
+
+			<tr>
+				<td colspan="2"><button type="submit">Add Flight</button></td>
+			</tr>
+		</table>
+	</form>
+
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Flight List</title>
+</head>
+<body>
+	<h1>Flight List</h1>
+
+	<table>
+		<thead>
+			<tr>
+				<th>Flight Number</th>
+				<th>Operating Airline</th>
+				<th>Departure City</th>
+				<th>Arrival City</th>
+				<th>Date of Departure</th>
+				<th>Estimated Departure Time</th>
+				<th>Edit</th>
+				<th>Delete</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="flight : ${flights}">
+				<td th:text="${flight.flightnum}"></td>
+				<td th:text="${flight.operatingairline}"></td>
+				<td th:text="${flight.departurecity}"></td>
+				<td th:text="${flight.arrivalcity}"></td>
+				<td th:text="${flight.dateofdeparture}"></td>
+				<td th:text="${flight.estimateddeparturetime}"></td>
+				<td><a th:href="@{/admin/flights/{id}/edit(id=${flight.id})}">Edit</a></td>
+				<td>
+					<form th:action="@{/admin/flights/{id}/delete(id=${flight.id})}" method="get">
+						<input type="hidden" name="_method" value="DELETE" />
+						<button type="submit">Delete</button>
+					</form>
+
+
+				</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<p>
+		<a th:href="@{/admin/flights/add}">Add Flight</a>
+	</p>
+
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Complete Reservation</title>
+</head>
+<body>
+Airlines: <span th:text="${reservation.isPresent() ? reservation.get().operatingairline : ''}"></span><br>
+Departure City: <span th:text="${reservation.isPresent() ? reservation.get().departurecity : ''}"></span><br>
+Arrival City: <span th:text="${reservation.isPresent() ? reservation.get().arrivalcity : ''}"></span><br>
+
+
+	<form action="completeReservation" method="post">
+		<h2>Passenger Details:</h2>
+
+		First Name:<input type="text" name="passengerFirstName"/> 
+		<br/>
+		Last Name:<input type="text" name="passengerLastName" /> 
+		<br/>
+		Email:<input type="text" name="passengerEmail" /> 
+		<br/>
+		Phone:<input type="text"name="passengerPhone" />
+
+
+		<h2>Card details</h2>
+		Name on the card:<input type="text" name="nameonTheCard" />
+		<br/> 
+		Card No:<input type="text" name="cardNumber" /> 
+		<br/>
+		Expiry date:<input type="text" name="expiryDate" /> 
+		<br/>
+		Three digit secure code: <input type="text" name="threeDigitSecureCode"/>
+		<br/>
+		<input type="hidden" name="flightid" th:value="${reservation.get().id}" />
+		<input type="submit" value="confirm" />
+	</form>
+
+
+</body>
+</html>
